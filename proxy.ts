@@ -26,7 +26,7 @@ export async function proxy(request: NextRequest): Promise<NextResponse> {
   const { pathname } = request.nextUrl;
   const isAuthRoute = pathname.startsWith('/login') || pathname.startsWith('/forgot-password');
 
-  if (!user && !isAuthRoute) return NextResponse.redirect(new URL('/login', request.url));
+  // if (!user && !isAuthRoute) return NextResponse.redirect(new URL('/login', request.url));
   if (user && isAuthRoute) return NextResponse.redirect(new URL('/home', request.url));
 
   return response;
