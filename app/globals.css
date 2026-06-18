@@ -2,12 +2,116 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Background */
+    --bg\/base: #f4f5f7;
+    --bg\/surface: #ffffff;
+    --bg\/elevated: #f0f1f4;
+    --bg\/hover: #e8eaf0;
+    --bg\/topbar: #6900aa;
+    --bg\/glass: rgba(0, 0, 0, 0.06);
+    --bg\/glass-highlight: rgba(0, 0, 0, 0.08);
+
+    /* Accent */
+    --accent: #a100ff;
+    --accent\/dim: #f3e6ff;
+    --accent\/glow: rgba(161, 0, 255, 0.3);
+
+    /* Text */
+    --text\/primary: #0d0f14;
+    --text\/secondary: #4b5263;
+    --text\/muted: #9299a8;
+    --text\/on-accent: white;
+
+    /* Border */
+    --border\/subtle: rgba(0, 0, 0, 0.07);
+    --border\/default: rgba(0, 0, 0, 0.14);
+    --border\/focus: rgba(161, 0, 255, 0.5);
+    --border\/divider: rgba(0, 0, 0, 0.1);
+    --border\/glass: rgba(255, 255, 255, 0.3);
+
+    /* Status */
+    --status\/success: #16a34a;
+    --status\/warning: #ca8a04;
+    --status\/error: #dc2626;
+    --status\/info: #2563eb;
+    --status\/success\/dim: rgba(34, 197, 94, 0.12);
+    --status\/warning\/dim: rgba(234, 179, 8, 0.12);
+    --status\/error\/dim: rgba(239, 68, 68, 0.12);
+    --status\/neutral\/dim: rgba(139, 146, 160, 0.12);
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    /* Background */
+    --bg\/base: #0a0c10;
+    --bg\/surface: #111318;
+    --bg\/elevated: #181c23;
+    --bg\/hover: #1e2330;
+    --bg\/glass: rgba(255, 255, 255, 0.12);
+    --bg\/glass-highlight: rgba(255, 255, 255, 0.18);
+
+    /* Accent (dark overrides) */
+    --accent\/dim: rgba(161, 0, 255, 0.15);
+    --accent\/glow: rgba(161, 0, 255, 0.4);
+
+    /* Text */
+    --text\/primary: #f0f2f5;
+    --text\/secondary: #8b92a0;
+    --text\/muted: #555c6b;
+
+    /* Border */
+    --border\/subtle: rgba(255, 255, 255, 0.07);
+    --border\/default: rgba(255, 255, 255, 0.14);
+    --border\/divider: rgba(255, 255, 255, 0.1);
+
+    /* Status */
+    --status\/success: #22c55e;
+    --status\/warning: #eab308;
+    --status\/error: #ef4444;
+    --status\/info: #60a5fa;
+  }
+
+  /* Border Radius — same in both modes */
+  :root {
+    --radius-badge: 4px;
+    --radius-tag: 6px;
+    --radius-nav: 8px;
+    --radius-logo: 8px;
+    --radius-button: 10px;
+    --radius-card-sm: 12px;
+    --radius-input: 14px;
+    --radius-card: 16px;
+    --radius-chip: 20px;
+    --radius-full: 9999px;
+    --radius\/xs: 2px;
+    --radius\/dot: 3.5px;
+
+    /* Spacing */
+    --spacing-4: 4px;
+    --spacing-8: 8px;
+    --spacing-12: 12px;
+    --spacing-16: 16px;
+    --spacing-20: 20px;
+    --spacing-24: 24px;
+    --spacing-32: 32px;
+    --spacing-40: 40px;
+    --spacing-48: 48px;
+    --spacing-64: 64px;
+    --spacing\/5: 5px;
+    --spacing\/6: 6px;
+    --spacing\/14: 14px;
+    --topbar\/padding-x: 20px;
+
+    /* Font sizes */
+    --font\/size\/3xs: 9px;
+    --font\/size\/2xs: 10px;
+    --font\/size\/xs: 11px;
+    --font\/size\/sm: 12px;
+    --font\/size\/md: 13px;
+    --font\/size\/lg: 14px;
+    --font\/size\/xl: 15px;
+  }
+
+  body {
+    font-family: var(--font-inter), sans-serif;
   }
 }
