@@ -50,5 +50,25 @@
   "home": {
     "title": "Inicio",
     "welcome": "Bienvenido"
+  },
+  "agentView": {
+    "greetingMorning": "Buenos días, {name}",
+    "greetingAfternoon": "Buenas tardes, {name}",
+    "greetingEvening": "Buenas noches, {name}",
+    "subtitle": "¿En qué te puedo ayudar con tu flujo de compras hoy?",
+    "inputPlaceholder": "Mensaje para BidIQ Agent…",
+    "recentLabel": "RECIENTES",
+    "nav": {
+      "overview": "Resumen",
+      "rfps": "RFPs",
+      "suppliers": "Proveedores",
+      "settings": "Configuración"
+    },
+    "suggestions": {
+      "createRfp": "Crear una RFP para servicios de limpieza",
+      "reviewSubmissions": "Revisar propuestas de RFP abiertas",
+      "checkSuppliers": "Ver rendimiento de proveedores",
+      "scheduleMeeting": "Programar reunión de evaluación"
+    }
   }
 }
