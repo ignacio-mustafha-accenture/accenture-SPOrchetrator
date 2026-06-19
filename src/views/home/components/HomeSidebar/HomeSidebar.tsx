@@ -1,15 +1,8 @@
 'use client';
 
+import { usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
-import { LogoMark, SidebarNavItem, SidebarSessionItem, SidebarUserChip } from '@/shared/ui';
-import type { ChatSession } from '../../domain/entities/ChatSession';
-
-type NavItem = {
-  id: string;
-  label: string;
-  href: string;
-  disabled?: boolean;
-};
+import { LogoMark, SidebarNavItem, SidebarUserChip } from '@/shared/ui';
 
 type User = {
   name: string;
@@ -17,27 +10,23 @@ type User = {
   initials: string;
 };
 
-type SidebarViewProps = {
-  navItems: NavItem[];
-  activeNavId: string;
-  recentSessions: ChatSession[];
+type HomeSidebarProps = {
   user: User;
-  recentLabel: string;
-  isDrawerOpen: boolean;
-  onDrawerClose: () => void;
-  onHamburgerClick: () => void;
+  isMobileOpen: boolean;
+  onMobileClose: () => void;
 };
 
-export function SidebarView({
-  navItems,
-  activeNavId,
-  recentSessions,
-  user,
-  recentLabel,
-  isDrawerOpen,
-  onDrawerClose,
-}: SidebarViewProps) {
+export function HomeSidebar({ user, isMobileOpen, onMobileClose }: HomeSidebarProps) {
+  const pathname = usePathname();
   const tc = useTranslations('common');
+  const t = useTranslations('home.nav');
+
+  const navItems = [
+    { id: 'dashboard', label: t('dashboard'), href: '/home' },
+    { id: 'agents',    label: t('agents'),    href: '/home/agents' },
+  ];
+
+  const activeId = pathname.startsWith('/home/agents') ? 'agents' : 'dashboard';
 
   const sidebarContent = (iconOnly: boolean) => (
     <div
@@ -70,44 +59,23 @@ export function SidebarView({
       <div className={String.raw`bg-[var(--border-subtle,rgba(255,255,255,0.07))] h-px w-full shrink-0`} />
 
       {/* Nav items */}
-      <div className={iconOnly ? 'flex flex-col gap-[4px] items-center p-[8px] w-full shrink-0' : 'flex flex-col gap-[2px] items-start p-[8px] w-full shrink-0'}>
+      <div
+        className={
+          iconOnly
+            ? 'flex flex-col gap-[4px] items-center p-[8px] w-full shrink-0'
+            : 'flex flex-col gap-[2px] items-start p-[8px] w-full shrink-0'
+        }
+      >
         {navItems.map((item) => (
           <SidebarNavItem
             key={item.id}
             label={item.label}
             href={item.href}
-            active={item.id === activeNavId}
+            active={item.id === activeId}
             iconOnly={iconOnly}
-            disabled={item.disabled}
           />
         ))}
       </div>
-
-      {!iconOnly && (
-        <>
-          {/* Divider */}
-          <div className={String.raw`bg-[var(--border-subtle,rgba(255,255,255,0.07))] h-px w-full shrink-0`} />
-
-          {/* Recent label */}
-          <div className="flex items-start pb-[4px] pt-[10px] px-[16px] w-full shrink-0">
-            <p className={String.raw`font-semibold leading-normal text-[color:var(--text-muted,#555c6b)] text-[10px] tracking-[0.8px] whitespace-nowrap`}>
-              {recentLabel}
-            </p>
-          </div>
-
-          {/* Recent sessions */}
-          <div className="flex flex-col gap-[2px] items-start pb-[8px] pt-[2px] px-[8px] w-full shrink-0">
-            {recentSessions.map((session) => (
-              <SidebarSessionItem
-                key={session.id}
-                title={session.title}
-                subtitle={`${session.status.charAt(0).toUpperCase() + session.status.slice(1)} · ${session.date}`}
-                href={`/agent-view?session=${session.id}`}
-              />
-            ))}
-          </div>
-        </>
-      )}
 
       {/* Spacer */}
       <div className="flex-1 min-h-0 w-full" />
@@ -130,27 +98,25 @@ export function SidebarView({
 
   return (
     <>
-      {/* Desktop: xl+ → 240px full sidebar */}
+      {/* Desktop: xl+ → 240px */}
       <div className="hidden xl:flex h-full shrink-0">
         {sidebarContent(false)}
       </div>
 
-      {/* Tablet: md–xl → 56px icon sidebar */}
+      {/* Tablet: md–xl → 56px icon-only */}
       <div className="hidden md:flex xl:hidden h-full shrink-0">
         {sidebarContent(true)}
       </div>
 
-      {/* Mobile: <md → drawer */}
-      {isDrawerOpen && (
+      {/* Mobile: drawer */}
+      {isMobileOpen && (
         <div className="md:hidden fixed inset-0 z-50 flex">
-          {/* Backdrop */}
           <button
             type="button"
             aria-label={tc('aria.closeMenu')}
-            onClick={onDrawerClose}
+            onClick={onMobileClose}
             className="absolute inset-0 bg-black/50 cursor-default"
           />
-          {/* Drawer panel */}
           <div className="relative z-10 h-full">
             {sidebarContent(false)}
           </div>

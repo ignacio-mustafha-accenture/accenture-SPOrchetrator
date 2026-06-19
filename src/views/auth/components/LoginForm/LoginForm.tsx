@@ -21,6 +21,7 @@ type FormValues = z.infer<typeof loginSchema>;
 
 export function LoginForm(): React.JSX.Element {
   const t = useTranslations('auth.login');
+  const tc = useTranslations('common');
   const router = useRouter();
   const [serverError, setServerError] = useState<string | null>(null);
 
@@ -53,12 +54,12 @@ export function LoginForm(): React.JSX.Element {
       <div className="flex flex-col gap-2 items-center justify-center w-full">
         <LogoMark
           className={String.raw`bg-[var(--accent,#a100ff)] flex items-center justify-center rounded-[var(--radius-logo,8px)] size-[32px]`}
-          text="IQ"
+          text={tc('logoText')}
         />
         <p
           className={String.raw`font-semibold leading-normal text-[color:var(--text-primary,#f0f2f5)] text-[length:var(--font-size-xl,15px)] text-center whitespace-nowrap`}
         >
-          S&amp;P Orchestrator
+          {tc('appNameFull')}
         </p>
         <p
           className={String.raw`font-medium leading-normal text-[color:var(--text-secondary,#8b92a0)] text-[length:var(--font-size-sm,12px)] text-center whitespace-nowrap`}

@@ -1,14 +1,16 @@
 import clsx from 'clsx';
-import { Avatar } from './Avatar';
+import { UserDropdown } from './UserDropdown';
 
 type TopbarPlatform = 'Desktop' | 'Tablet' | 'Mobile';
-
 type TopbarProps = {
   className?: string;
   platform?: TopbarPlatform;
   version?: string;
   tier?: string;
   userInitials?: string;
+  userName?: string;
+  userEmail?: string;
+  onSignOut?: () => void;
 };
 
 const BADGE_CLASS = String.raw`border border-solid flex items-center px-[var(--spacing-8,8px)] py-[var(--spacing-4,4px)] rounded-[var(--radius-tag,6px)] shrink-0 gap-[var(--spacing-5,5px)] bg-[var(--bg-glass-highlight,rgba(255,255,255,0.18))] border-[var(--border-glass,rgba(255,255,255,0.3))]`;
@@ -21,6 +23,9 @@ export function Topbar({
   version = 'v2.1.0',
   tier = 'Enterprise',
   userInitials = 'NM',
+  userName,
+  userEmail,
+  onSignOut,
 }: TopbarProps) {
   const isDesktop = platform === 'Desktop';
   const isTablet = platform === 'Tablet';
@@ -71,7 +76,12 @@ export function Topbar({
             </div>
           </>
         )}
-        <Avatar initials={userInitials} size="S" />
+        <UserDropdown
+            userInitials={userInitials}
+            userName={userName}
+            userEmail={userEmail}
+            onSignOut={onSignOut}
+          />
       </div>
     </header>
   );

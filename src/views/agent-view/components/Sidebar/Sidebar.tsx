@@ -1,14 +1,15 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 import { SidebarView } from './SidebarView';
 import type { ChatSession } from '../../domain/entities/ChatSession';
 
-const NAV_ITEMS = [
-  { id: 'overview', label: 'Overview', href: '/home' },
-  { id: 'rfps', label: 'RFPs', href: '/agent-view' },
-  { id: 'suppliers', label: 'Suppliers', href: '/agent-view/suppliers' },
-  { id: 'settings', label: 'Settings', href: '/agent-view/settings' },
+const NAV_CONFIG = [
+  { id: 'overview',  href: '/home',              disabled: true },
+  { id: 'rfps',      href: '/agent-view',         disabled: false },
+  { id: 'suppliers', href: '/agent-view/suppliers', disabled: true },
+  { id: 'settings',  href: '/agent-view/settings',  disabled: true },
 ];
 
 type SidebarProps = {
@@ -21,11 +22,17 @@ type SidebarProps = {
 
 export function Sidebar({ recentSessions, user, recentLabel, isMobileOpen, onMobileClose }: SidebarProps) {
   const pathname = usePathname();
+  const t = useTranslations('agentView.nav');
+
+  const NAV_ITEMS = NAV_CONFIG.map((item) => ({
+    ...item,
+    label: t(item.id as 'overview' | 'rfps' | 'suppliers' | 'settings'),
+  }));
 
   const activeNavId =
     NAV_ITEMS.slice()
       .reverse()
-      .find((item) => pathname.startsWith(item.href) && item.href !== '/home')?.id ?? 'rfps';
+      .find((item) => pathname.startsWith(item.href) && item.href !== '/agent-view')?.id ?? 'rfps';
 
   return (
     <SidebarView

@@ -1,12 +1,17 @@
-import { Avatar } from './Avatar';
+'use client';
+
+import { useTranslations } from 'next-intl';
+import { UserDropdown } from './UserDropdown';
 
 type TopbarBidiqProps = {
   className?: string;
   userName?: string;
+  userEmail?: string;
   userInitials?: string;
   agentOnline?: boolean;
   tier?: string;
   version?: string;
+  onSignOut?: () => void;
   /** Slot for the mobile hamburger button (rendered only on mobile, passed from client shell) */
   mobileMenuSlot?: React.ReactNode;
 };
@@ -14,12 +19,16 @@ type TopbarBidiqProps = {
 export function TopbarBidiq({
   className,
   userName = 'I. Mustafha',
+  userEmail,
   userInitials = 'IM',
   agentOnline = true,
   tier = 'ENTERPRISE',
   version = 'V2.1.0',
+  onSignOut,
   mobileMenuSlot,
 }: TopbarBidiqProps) {
+  const tc = useTranslations('common');
+
   return (
     <header
       className={
@@ -37,23 +46,23 @@ export function TopbarBidiq({
       {/* Desktop/Tablet: full breadcrumb */}
       <div className="hidden md:flex items-center overflow-clip shrink-0 gap-0">
         <span className={String.raw`font-extrabold leading-normal text-white text-[15px] tracking-[-0.3px] whitespace-nowrap shrink-0`}>
-          Accenture
+          {tc('companyName')}
         </span>
         <span className={String.raw`leading-normal text-[#d580ff] text-[15px] whitespace-nowrap shrink-0 px-[3px]`}>
           {' ›'}
         </span>
         <span className={String.raw`font-semibold leading-normal text-[rgba(255,255,255,0.85)] text-[12px] tracking-[0.36px] whitespace-nowrap shrink-0`}>
-          Procurement Technology
+          {tc('procurementTechnology')}
         </span>
         <div className="bg-[rgba(255,255,255,0.25)] h-[18px] w-px mx-[12px] shrink-0" />
         <span className={String.raw`font-bold leading-normal text-[#d580ff] text-[12px] tracking-[0.36px] whitespace-nowrap shrink-0`}>
-          BidIQ
+          {tc('appName')}
         </span>
       </div>
 
-      {/* Mobile: just "BidIQ" title */}
+      {/* Mobile: just app name */}
       <span className={String.raw`flex md:hidden font-extrabold leading-normal text-white text-[15px] whitespace-nowrap shrink-0`}>
-        BidIQ
+        {tc('appName')}
       </span>
 
       {/* Spacer */}
@@ -82,18 +91,20 @@ export function TopbarBidiq({
               }
             />
             <span className={String.raw`font-semibold text-[11px] text-[rgba(255,255,255,0.7)] whitespace-nowrap`}>
-              {agentOnline ? 'Agent Online' : 'Agent Offline'}
+              {agentOnline ? tc('agentOnline') : tc('agentOffline')}
             </span>
           </div>
           <div className="bg-[rgba(255,255,255,0.25)] h-[18px] w-px shrink-0" />
         </div>
 
-        <div className="flex items-center gap-[8px] shrink-0">
-          <Avatar initials={userInitials} size="S" />
-          <span className={String.raw`hidden xl:block font-semibold text-[11px] text-[rgba(255,255,255,0.85)] whitespace-nowrap`}>
-            {userName}
-          </span>
-        </div>
+        <UserDropdown
+            userInitials={userInitials}
+            userName={userName}
+            userEmail={userEmail}
+            onSignOut={onSignOut}
+            showName
+            triggerClassName={String.raw`px-[10px] py-[5px] rounded-[var(--radius-button,10px)] bg-[rgba(255,255,255,0.1)] hover:bg-[rgba(255,255,255,0.18)] transition-colors duration-150 text-[rgba(255,255,255,0.85)]`}
+          />
       </div>
     </header>
   );

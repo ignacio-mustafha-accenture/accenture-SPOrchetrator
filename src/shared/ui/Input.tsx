@@ -1,6 +1,7 @@
 'use client';
 
 import React, { forwardRef, useState, useId } from 'react';
+import { useTranslations } from 'next-intl';
 import clsx from 'clsx';
 
 type InputProps = {
@@ -21,6 +22,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
   { className, type = 'text', label, placeholder, value, onChange, onBlur, name, errorMessage, disabled = false, id },
   ref,
 ) {
+  const tc = useTranslations('common.aria');
   const [showPassword, setShowPassword] = useState(false);
   const generatedId = useId();
   const inputId = id ?? (label ? generatedId : undefined);
@@ -73,7 +75,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
             tabIndex={-1}
             disabled={disabled}
             onClick={() => setShowPassword((v) => !v)}
-            aria-label={showPassword ? 'Hide password' : 'Show password'}
+            aria-label={showPassword ? tc('hidePassword') : tc('showPassword')}
             className={clsx(
               String.raw`rounded-[var(--radius-full,9999px)] shrink-0 size-[18px] bg-[var(--bg-glass,rgba(255,255,255,0.12))]`,
               'flex items-center justify-center cursor-pointer disabled:cursor-not-allowed',

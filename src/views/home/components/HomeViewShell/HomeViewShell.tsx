@@ -5,30 +5,25 @@ import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { TopbarBidiq } from '@/shared/ui';
 import { createClient } from '@/shared/lib/supabase/client';
-import { Sidebar } from '../Sidebar/Sidebar';
-import type { ChatSession } from '../../domain/entities/ChatSession';
+import { HomeSidebar } from '../HomeSidebar/HomeSidebar';
 
-type AgentViewShellProps = {
+type HomeViewShellProps = {
   children: React.ReactNode;
   userName: string;
   userEmail?: string;
   userInitials: string;
   userRole: string;
-  recentSessions: ChatSession[];
-  recentLabel: string;
   agentOnline?: boolean;
 };
 
-export function AgentViewShell({
+export function HomeViewShell({
   children,
   userName,
   userEmail,
   userInitials,
   userRole,
-  recentSessions,
-  recentLabel,
   agentOnline = true,
-}: AgentViewShellProps) {
+}: HomeViewShellProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const tc = useTranslations('common');
   const router = useRouter();
@@ -63,10 +58,8 @@ export function AgentViewShell({
         mobileMenuSlot={hamburger}
       />
       <div className="flex flex-1 overflow-hidden min-h-0">
-        <Sidebar
-          recentSessions={recentSessions}
+        <HomeSidebar
           user={{ name: userName, role: userRole, initials: userInitials }}
-          recentLabel={recentLabel}
           isMobileOpen={isMobileMenuOpen}
           onMobileClose={() => setIsMobileMenuOpen(false)}
         />

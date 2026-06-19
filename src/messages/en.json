@@ -45,11 +45,48 @@
         "passwordMismatch": "Passwords do not match",
         "generic": "Something went wrong. Please try again."
       }
+    },
+    "passwordStrength": {
+      "weak": "Weak",
+      "fair": "Fair",
+      "good": "Good",
+      "strong": "Strong"
     }
   },
   "home": {
     "title": "Home",
-    "welcome": "Welcome"
+    "welcome": "Welcome",
+    "nav": {
+      "dashboard": "Dashboard",
+      "agents": "Agents"
+    },
+    "dashboard": {
+      "badge": "In Development",
+      "heading": "The orchestration layer for procurement",
+      "subtitle": "More capabilities are on their way. For now, explore the active agents."
+    },
+    "agents": {
+      "title": "Agents",
+      "subtitle": "Select an agent to get started",
+      "active": "Active",
+      "comingSoon": "Coming soon",
+      "bidiq": {
+        "name": "BidIQ",
+        "description": "Procurement AI · RFP management"
+      },
+      "supplierIntel": {
+        "name": "Supplier Intel",
+        "description": "Vendor analysis & scoring"
+      },
+      "contractManager": {
+        "name": "Contract Manager",
+        "description": "Contract lifecycle automation"
+      },
+      "spendAnalyzer": {
+        "name": "Spend Analyzer",
+        "description": "Category spend analytics"
+      }
+    }
   },
   "agentView": {
     "greetingMorning": "Good morning, {name}",
@@ -69,6 +106,41 @@
       "reviewSubmissions": "Review open RFP submissions",
       "checkSuppliers": "Check supplier performance",
       "scheduleMeeting": "Schedule evaluation meeting"
+    },
+    "chatHeader": {
+      "agentName": "BidIQ Agent",
+      "subtitle": "Procurement AI · Ready",
+      "toggleLog": "Execution log",
+      "newSession": "New session"
+    },
+    "executionLog": {
+      "title": "Execution Log",
+      "empty": "Agent function calls will appear here"
+    }
+  },
+  "common": {
+    "appName": "BidIQ",
+    "appNameFull": "S&P Orchestrator",
+    "logoText": "IQ",
+    "companyName": "Accenture",
+    "procurementTechnology": "Procurement Technology",
+    "signOut": "Sign out",
+    "appearance": "Appearance",
+    "language": "Language",
+    "themeLight": "Light",
+    "themeDark": "Dark",
+    "agentOnline": "Agent Online",
+    "agentOffline": "Agent Offline",
+    "roles": {
+      "procurementManager": "Procurement Manager"
+    },
+    "aria": {
+      "openMenu": "Open menu",
+      "closeMenu": "Close menu",
+      "userMenu": "User menu",
+      "sendMessage": "Send message",
+      "showPassword": "Show password",
+      "hidePassword": "Hide password"
     }
   }
 }

@@ -45,11 +45,48 @@
         "passwordMismatch": "Las contraseñas no coinciden",
         "generic": "Algo salió mal. Por favor intentá de nuevo."
       }
+    },
+    "passwordStrength": {
+      "weak": "Muy débil",
+      "fair": "Regular",
+      "good": "Buena",
+      "strong": "Fuerte"
     }
   },
   "home": {
     "title": "Inicio",
-    "welcome": "Bienvenido"
+    "welcome": "Bienvenido",
+    "nav": {
+      "dashboard": "Dashboard",
+      "agents": "Agentes"
+    },
+    "dashboard": {
+      "badge": "En Desarrollo",
+      "heading": "La capa de orquestación para compras",
+      "subtitle": "Más funcionalidades están en camino. Por ahora, explorá los agentes activos."
+    },
+    "agents": {
+      "title": "Agentes",
+      "subtitle": "Seleccioná un agente para comenzar",
+      "active": "Activo",
+      "comingSoon": "Próximamente",
+      "bidiq": {
+        "name": "BidIQ",
+        "description": "Procurement AI · Gestión de RFPs"
+      },
+      "supplierIntel": {
+        "name": "Supplier Intel",
+        "description": "Análisis y scoring de proveedores"
+      },
+      "contractManager": {
+        "name": "Contract Manager",
+        "description": "Automatización del ciclo de contratos"
+      },
+      "spendAnalyzer": {
+        "name": "Spend Analyzer",
+        "description": "Analítica de gasto por categoría"
+      }
+    }
   },
   "agentView": {
     "greetingMorning": "Buenos días, {name}",
@@ -69,6 +106,41 @@
       "reviewSubmissions": "Revisar propuestas de RFP abiertas",
       "checkSuppliers": "Ver rendimiento de proveedores",
       "scheduleMeeting": "Programar reunión de evaluación"
+    },
+    "chatHeader": {
+      "agentName": "BidIQ Agent",
+      "subtitle": "Procurement AI · Listo",
+      "toggleLog": "Registro de ejecución",
+      "newSession": "Nueva sesión"
+    },
+    "executionLog": {
+      "title": "Registro de Ejecución",
+      "empty": "Las llamadas de funciones del agente aparecerán aquí"
+    }
+  },
+  "common": {
+    "appName": "BidIQ",
+    "appNameFull": "S&P Orchestrator",
+    "logoText": "IQ",
+    "companyName": "Accenture",
+    "procurementTechnology": "Procurement Technology",
+    "signOut": "Cerrar sesión",
+    "appearance": "Apariencia",
+    "language": "Idioma",
+    "themeLight": "Claro",
+    "themeDark": "Oscuro",
+    "agentOnline": "Agente en línea",
+    "agentOffline": "Agente desconectado",
+    "roles": {
+      "procurementManager": "Gerente de Compras"
+    },
+    "aria": {
+      "openMenu": "Abrir menú",
+      "closeMenu": "Cerrar menú",
+      "userMenu": "Menú de usuario",
+      "sendMessage": "Enviar mensaje",
+      "showPassword": "Mostrar contraseña",
+      "hidePassword": "Ocultar contraseña"
     }
   }
 }

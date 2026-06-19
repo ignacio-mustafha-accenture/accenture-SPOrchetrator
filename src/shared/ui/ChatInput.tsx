@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef } from 'react';
+import { useTranslations } from 'next-intl';
 
 type ChatInputProps = {
   placeholder?: string;
@@ -9,6 +10,7 @@ type ChatInputProps = {
 };
 
 export function ChatInput({ placeholder = 'Message BidIQ Agent…', onSubmit, disabled = false }: ChatInputProps) {
+  const tc = useTranslations('common.aria');
   const [value, setValue] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -45,7 +47,7 @@ export function ChatInput({ placeholder = 'Message BidIQ Agent…', onSubmit, di
         type="button"
         onClick={handleSubmit}
         disabled={disabled || !value.trim()}
-        aria-label="Send message"
+        aria-label={tc('sendMessage')}
         className={String.raw`bg-[var(--accent,#a100ff)] rounded-[10px] shrink-0 size-[34px] flex items-center justify-center cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed transition-opacity hover:opacity-80`}
       >
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">

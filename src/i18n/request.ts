@@ -1,5 +1,5 @@
 import { getRequestConfig } from 'next-intl/server';
-import { headers } from 'next/headers';
+import { cookies, headers } from 'next/headers';
 
 const supportedLocales = ['es', 'en'] as const;
 type Locale = (typeof supportedLocales)[number];
@@ -12,7 +12,16 @@ function detectLocale(acceptLanguage: string | null): Locale {
 }
 
 export default getRequestConfig(async () => {
-  const headersList = await headers();
-  const locale = detectLocale(headersList.get('accept-language'));
+  const cookieStore = await cookies();
+  const cookieLocale = cookieStore.get('locale')?.value as Locale | undefined;
+
+  let locale: Locale;
+  if (cookieLocale && supportedLocales.includes(cookieLocale)) {
+    locale = cookieLocale;
+  } else {
+    const headersList = await headers();
+    locale = detectLocale(headersList.get('accept-language'));
+  }
+
   return { locale, messages: (await import(`../../src/messages/${locale}.json`)).default };
 });

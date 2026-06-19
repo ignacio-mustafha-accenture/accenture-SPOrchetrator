@@ -8,6 +8,7 @@ const mockClient = {
     resetPasswordForEmail: async () => ({ error: null }),
     updateUser: async () => ({ error: null }),
     getUser: async () => ({ data: { user: null }, error: null }),
+    signOut: async () => ({ error: null }),
   },
 };
 

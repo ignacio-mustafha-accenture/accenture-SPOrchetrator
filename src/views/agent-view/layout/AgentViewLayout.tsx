@@ -1,3 +1,4 @@
+import { getTranslations } from 'next-intl/server';
 import { createClient } from '@/shared/lib/supabase/server';
 import { AgentViewShell } from '../components/AgentViewShell/AgentViewShell';
 import { getRecentSessions } from '../actions/getSessions';
@@ -7,10 +8,13 @@ type AgentViewLayoutProps = {
 };
 
 export async function AgentViewLayout({ children }: AgentViewLayoutProps) {
-  const supabase = await createClient();
+  const [tc, ta, supabase, sessions] = await Promise.all([
+    getTranslations('common'),
+    getTranslations('agentView'),
+    createClient(),
+    getRecentSessions(),
+  ]);
   const { data: { user } } = await supabase.auth.getUser();
-
-  const sessions = await getRecentSessions();
 
   const displayName = user?.user_metadata?.full_name ?? user?.email?.split('@')[0] ?? 'Ignacio';
   const initials = displayName
@@ -23,10 +27,11 @@ export async function AgentViewLayout({ children }: AgentViewLayoutProps) {
   return (
     <AgentViewShell
       userName={displayName}
+      userEmail={user?.email}
       userInitials={initials}
-      userRole="Procurement Manager"
+      userRole={tc('roles.procurementManager')}
       recentSessions={sessions}
-      recentLabel="RECENT"
+      recentLabel={ta('recentLabel')}
       agentOnline
     >
       {children}

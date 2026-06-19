@@ -10,6 +10,7 @@ export { LogoMark } from './LogoMark';
 export { PasswordStrength } from './PasswordStrength';
 export { Select } from './Select';
 export { Topbar } from './Topbar';
+export { UserDropdown } from './UserDropdown';
 export { TopbarBidiq } from './TopbarBidiq';
 export { SidebarNavItem } from './SidebarNavItem';
 export { SidebarSessionItem } from './SidebarSessionItem';

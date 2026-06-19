@@ -1,5 +1,5 @@
-import { HomePage } from '@/views/home/layout/HomePage';
+import { DashboardPage } from '@/views/home/layout/DashboardPage';
 
-export default function Page(): Promise<React.JSX.Element> {
-  return HomePage();
+export default function Page() {
+  return <DashboardPage />;
 }
