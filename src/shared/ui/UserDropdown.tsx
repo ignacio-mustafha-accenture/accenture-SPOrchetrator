@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState, useTransition } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { useTheme } from 'next-themes';
 import { useLocale, useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
@@ -74,8 +75,14 @@ export function UserDropdown({
         )}
       </button>
 
+      <AnimatePresence>
       {open && (
-        <div
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95, y: -6 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.95, y: -6 }}
+          transition={{ duration: 0.18, ease: 'easeOut' }}
+          style={{ originX: 1, originY: 0 }}
           className={clsx(
             String.raw`absolute right-0 top-[calc(100%+8px)] z-50`,
             String.raw`border border-solid flex flex-col items-start py-[8px] rounded-[var(--radius-card,16px)] w-[240px]`,
@@ -200,8 +207,9 @@ export function UserDropdown({
           </button>
 
           <div className="h-[4px] w-full shrink-0" />
-        </div>
+        </motion.div>
       )}
+      </AnimatePresence>
     </div>
   );
 }

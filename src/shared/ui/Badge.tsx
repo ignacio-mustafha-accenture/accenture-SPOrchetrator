@@ -6,6 +6,7 @@ type BadgeVariant = 'Success' | 'Warning' | 'Error' | 'Accent' | 'Neutral';
 type BadgeProps = {
   className?: string;
   variant?: BadgeVariant;
+  size?: 'sm' | 'md';
   children?: React.ReactNode;
 };
 
@@ -42,21 +43,34 @@ const variantStyles: Record<BadgeVariant, { wrapper: string; dot: string; text: 
   },
 };
 
-export function Badge({ className, variant = 'Success', children }: BadgeProps) {
+export function Badge({ className, variant = 'Success', size = 'md', children }: BadgeProps) {
   const s = variantStyles[variant];
 
   return (
     <span
       className={clsx(
         'border border-solid flex gap-[5px] items-center',
-        'px-[var(--spacing-8,8px)] py-[var(--spacing-4,4px)]',
-        'rounded-[var(--radius-tag,6px)]',
+        size === 'sm'
+          ? 'px-[5px] py-[2px] rounded-[4px]'
+          : 'px-[var(--spacing-8,8px)] py-[var(--spacing-4,4px)] rounded-[var(--radius-tag,6px)]',
         s.wrapper,
         className,
       )}
     >
-      <span className={clsx(String.raw`rounded-[var(--radius-dot,3.5px)] shrink-0 size-[7px]`, s.dot)} />
-      <p className={clsx(String.raw`font-medium text-[length:var(--font-size-xs,11px)] whitespace-nowrap`, s.text)}>
+      <span
+        className={clsx(
+          'rounded-full shrink-0',
+          size === 'sm' ? 'size-[5px]' : String.raw`rounded-[var(--radius-dot,3.5px)] size-[7px]`,
+          s.dot,
+        )}
+      />
+      <p
+        className={clsx(
+          'font-medium whitespace-nowrap',
+          size === 'sm' ? 'text-[10px]' : String.raw`text-[length:var(--font-size-xs,11px)]`,
+          s.text,
+        )}
+      >
         {children ?? s.label}
       </p>
     </span>

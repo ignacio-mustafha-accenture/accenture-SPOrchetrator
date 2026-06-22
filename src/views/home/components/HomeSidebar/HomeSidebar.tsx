@@ -2,7 +2,21 @@
 
 import { usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
+import { LayoutDashboard, Bot } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { LogoMark, SidebarNavItem, SidebarUserChip } from '@/shared/ui';
+
+const navContainerVariants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.09, delayChildren: 0.1 },
+  },
+};
+
+const navItemVariants = {
+  hidden: { opacity: 0, y: 6 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.32, ease: 'easeOut' } },
+};
 
 type User = {
   name: string;
@@ -22,8 +36,8 @@ export function HomeSidebar({ user, isMobileOpen, onMobileClose }: HomeSidebarPr
   const t = useTranslations('home.nav');
 
   const navItems = [
-    { id: 'dashboard', label: t('dashboard'), href: '/home' },
-    { id: 'agents',    label: t('agents'),    href: '/home/agents' },
+    { id: 'dashboard', label: t('dashboard'), href: '/home',        icon: LayoutDashboard },
+    { id: 'agents',    label: t('agents'),    href: '/home/agents', icon: Bot },
   ];
 
   const activeId = pathname.startsWith('/home/agents') ? 'agents' : 'dashboard';
@@ -59,23 +73,28 @@ export function HomeSidebar({ user, isMobileOpen, onMobileClose }: HomeSidebarPr
       <div className={String.raw`bg-[var(--border-subtle,rgba(255,255,255,0.07))] h-px w-full shrink-0`} />
 
       {/* Nav items */}
-      <div
+      <motion.div
         className={
           iconOnly
             ? 'flex flex-col gap-[4px] items-center p-[8px] w-full shrink-0'
             : 'flex flex-col gap-[2px] items-start p-[8px] w-full shrink-0'
         }
+        variants={navContainerVariants}
+        initial="hidden"
+        animate="visible"
       >
         {navItems.map((item) => (
-          <SidebarNavItem
-            key={item.id}
-            label={item.label}
-            href={item.href}
-            active={item.id === activeId}
-            iconOnly={iconOnly}
-          />
+          <motion.div key={item.id} variants={navItemVariants} className="w-full">
+            <SidebarNavItem
+              label={item.label}
+              href={item.href}
+              active={item.id === activeId}
+              iconOnly={iconOnly}
+              icon={item.icon}
+            />
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
 
       {/* Spacer */}
       <div className="flex-1 min-h-0 w-full" />

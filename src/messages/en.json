@@ -63,7 +63,176 @@
     "dashboard": {
       "badge": "In Development",
       "heading": "The orchestration layer for procurement",
-      "subtitle": "More capabilities are on their way. For now, explore the active agents."
+      "subtitle": "More capabilities are on their way. For now, explore the active agents.",
+      "rfpsTitle": "RFP Dashboard",
+      "empty": "No RFPs found.",
+      "kpi": {
+        "rfpsActivos": "Active RFPs",
+        "rfpsActivosSub": "Bid Analysis",
+        "propuestas": "Processed Proposals",
+        "propuestasSub": "100% auto-validated",
+        "aprobaciones": "HITL Approvals",
+        "aprobacionesSub": "Gate 1 + Gate 2",
+        "ciclo": "Evaluation Cycle",
+        "cicloSub": "vs. manual process",
+        "issues": "Audit Issues",
+        "issuesSub": "No incidents"
+      },
+      "pipeline": {
+        "title": "Pipeline",
+        "searchPlaceholder": "Search RFP...",
+        "filterAll": "All",
+        "rows": "{count} of {total} results",
+        "colRfp": "RFP",
+        "colName": "Name",
+        "colCategory": "Category",
+        "colValue": "Est. Value",
+        "colSuppliers": "Suppliers",
+        "colDeadline": "Deadline",
+        "colStatus": "Status",
+        "colProgress": "Progress",
+        "colStageStatus": "Stage Status",
+        "colStage": "Stage",
+        "colAgent": "Active Agent",
+        "colConfidence": "Confidence",
+        "colArchitecture": "Architecture",
+        "empty": "No active RFPs."
+      },
+      "activity": {
+        "title": "Recent Activity",
+        "filterAll": "All",
+        "colTime": "Time",
+        "colLevel": "Level",
+        "colMessage": "Message"
+      },
+      "stageStatus": {
+        "running": "Running",
+        "done": "Done",
+        "hitl": "Awaiting HITL"
+      },
+      "pipelineStrip": {
+        "title": "Evaluation Pipeline",
+        "e1": { "title": "Proposal Structuring", "sub": "Parser · Extractor · Validator" },
+        "e2": { "title": "Technical Evaluation", "sub": "Scorecard · Evaluators" },
+        "e3": { "title": "TCO Engine", "sub": "3 years · 3 scenarios" },
+        "e4": { "title": "Risk & Compliance", "sub": "Heatmap · Mitigations" },
+        "e5": { "title": "Insights & Shortlist", "sub": "Draft recommendation" },
+        "state": {
+          "done": "Completed",
+          "running": "In progress",
+          "hitl": "Awaiting Gate",
+          "idle": "Pending"
+        }
+      }
+    },
+    "rfps": {
+      "card": {
+        "progress": "Progress",
+        "suppliers": "{count} suppliers",
+        "due": "Due {date}",
+        "status": {
+          "parsing": "Parsing",
+          "evaluacion": "Evaluation",
+          "aprobacion": "Approval",
+          "completo": "Complete"
+        }
+      },
+      "detail": {
+        "tabs": {
+          "resumen": "Summary",
+          "suppliers": "Suppliers",
+          "scores": "Scores",
+          "variables": "Variables",
+          "risk": "Risk",
+          "gates": "Gates"
+        },
+        "header": {
+          "estimatedValue": "Estimated Value",
+          "deadline": "Deadline",
+          "category": "Category",
+          "invitedSuppliers": "Invited Suppliers"
+        },
+        "proposals": {
+          "filterAll": "All",
+          "colSupplier": "Supplier",
+          "colDate": "Submission Date",
+          "colStatus": "Status",
+          "colConfidence": "Confidence",
+          "empty": "No proposals found.",
+          "status": {
+            "confirmed": "Confirmed",
+            "review": "In Review",
+            "pending": "Pending",
+            "rejected": "Rejected"
+          }
+        },
+        "suppliers": {
+          "searchPlaceholder": "Search suppliers...",
+          "colName": "Name",
+          "colEmail": "Email",
+          "colCountry": "Country",
+          "colScore": "Composite Score",
+          "empty": "No suppliers found."
+        },
+        "scores": {
+          "colDimension": "Dimension",
+          "empty": "No score data found."
+        },
+        "variables": {
+          "searchPlaceholder": "Search variables...",
+          "filterAll": "All",
+          "filterFlagged": "Flagged",
+          "rows": "{count} of {total} results",
+          "colVariable": "Variable",
+          "colDimension": "Dimension",
+          "colSupplier": "Supplier",
+          "colValue": "Value",
+          "colConfidence": "Confidence",
+          "colFlagged": "Flagged",
+          "empty": "No variables found."
+        },
+        "risk": {
+          "filterAll": "All",
+          "colFactor": "Risk Factor",
+          "empty": "No risk data found.",
+          "rating": {
+            "Bajo": "Low",
+            "Medio": "Medium",
+            "Alto": "High",
+            "Crítico": "Critical"
+          }
+        },
+        "gates": {
+          "irreversible": "Irreversible",
+          "empty": "No gates found.",
+          "decidedBy": "Decided by",
+          "on": "on",
+          "btnDecide": "Decide",
+          "status": {
+            "pending": "Pending",
+            "open": "Open",
+            "approved": "Approved",
+            "rejected": "Rejected",
+            "decided": "Decided",
+            "expired": "Expired"
+          },
+          "modal": {
+            "title": "Gate Decision",
+            "labelDecision": "Decision",
+            "approve": "Approve",
+            "reject": "Reject",
+            "labelDecidedBy": "Decided by",
+            "placeholderDecidedBy": "Your name",
+            "labelRationale": "Rationale",
+            "placeholderRationale": "Explain your decision…",
+            "rationaleHint": "Required for irreversible gates",
+            "submit": "Confirm decision",
+            "cancel": "Cancel",
+            "success": "Gate decision saved",
+            "error": "Failed to save decision"
+          }
+        }
+      }
     },
     "agents": {
       "title": "Agents",

@@ -63,7 +63,176 @@
     "dashboard": {
       "badge": "En Desarrollo",
       "heading": "La capa de orquestación para compras",
-      "subtitle": "Más funcionalidades están en camino. Por ahora, explorá los agentes activos."
+      "subtitle": "Más funcionalidades están en camino. Por ahora, explorá los agentes activos.",
+      "rfpsTitle": "Panel de RFPs",
+      "empty": "No se encontraron RFPs.",
+      "kpi": {
+        "rfpsActivos": "RFPs Activos",
+        "rfpsActivosSub": "Bid Analysis",
+        "propuestas": "Propuestas Procesadas",
+        "propuestasSub": "100% auto-validadas",
+        "aprobaciones": "Aprobaciones HITL",
+        "aprobacionesSub": "Gate 1 + Gate 2",
+        "ciclo": "Ciclo de Evaluación",
+        "cicloSub": "vs. proceso manual",
+        "issues": "Issues de Auditoría",
+        "issuesSub": "Sin incidencias"
+      },
+      "pipeline": {
+        "title": "Pipeline",
+        "searchPlaceholder": "Buscar RFP...",
+        "filterAll": "Todos",
+        "rows": "{count} de {total} resultados",
+        "colRfp": "RFP",
+        "colName": "Nombre",
+        "colCategory": "Categoría",
+        "colValue": "Valor Est.",
+        "colSuppliers": "Proveed.",
+        "colDeadline": "Deadline",
+        "colStatus": "Status",
+        "colProgress": "Progreso",
+        "colStageStatus": "Estado Etapa",
+        "colStage": "Etapa",
+        "colAgent": "Agente Activo",
+        "colConfidence": "Confianza",
+        "colArchitecture": "Arquitectura",
+        "empty": "No hay RFPs activos."
+      },
+      "activity": {
+        "title": "Actividad Reciente",
+        "filterAll": "Todos",
+        "colTime": "Tiempo",
+        "colLevel": "Nivel",
+        "colMessage": "Mensaje"
+      },
+      "stageStatus": {
+        "running": "En curso",
+        "done": "Completado",
+        "hitl": "Esperando HITL"
+      },
+      "pipelineStrip": {
+        "title": "Pipeline de Evaluación",
+        "e1": { "title": "Estructuración de Propuestas", "sub": "Parser · Extractor · Validador" },
+        "e2": { "title": "Evaluación Técnica", "sub": "Scorecard · Evaluadores" },
+        "e3": { "title": "TCO Engine", "sub": "3 años · 3 escenarios" },
+        "e4": { "title": "Riesgo & Compliance", "sub": "Heatmap · Mitigaciones" },
+        "e5": { "title": "Insights & Shortlist", "sub": "Recomendación draft" },
+        "state": {
+          "done": "Completado",
+          "running": "En curso",
+          "hitl": "Esperando Gate",
+          "idle": "Pendiente"
+        }
+      }
+    },
+    "rfps": {
+      "card": {
+        "progress": "Progreso",
+        "suppliers": "{count} proveedores",
+        "due": "Vence {date}",
+        "status": {
+          "parsing": "Parseo",
+          "evaluacion": "Evaluación",
+          "aprobacion": "Aprobación",
+          "completo": "Completo"
+        }
+      },
+      "detail": {
+        "tabs": {
+          "resumen": "Resumen",
+          "suppliers": "Proveedores",
+          "scores": "Scores",
+          "variables": "Variables",
+          "risk": "Riesgo",
+          "gates": "Gates"
+        },
+        "header": {
+          "estimatedValue": "Valor Estimado",
+          "deadline": "Fecha Límite",
+          "category": "Categoría",
+          "invitedSuppliers": "Proveedores Invitados"
+        },
+        "proposals": {
+          "filterAll": "Todos",
+          "colSupplier": "Proveedor",
+          "colDate": "Fecha de Envío",
+          "colStatus": "Estado",
+          "colConfidence": "Confianza",
+          "empty": "No se encontraron propuestas.",
+          "status": {
+            "confirmed": "Confirmada",
+            "review": "En Revisión",
+            "pending": "Pendiente",
+            "rejected": "Rechazada"
+          }
+        },
+        "suppliers": {
+          "searchPlaceholder": "Buscar proveedores...",
+          "colName": "Nombre",
+          "colEmail": "Email",
+          "colCountry": "País",
+          "colScore": "Score Compuesto",
+          "empty": "No se encontraron proveedores."
+        },
+        "scores": {
+          "colDimension": "Dimensión",
+          "empty": "No se encontraron datos de scores."
+        },
+        "variables": {
+          "searchPlaceholder": "Buscar variables...",
+          "filterAll": "Todos",
+          "filterFlagged": "Marcadas",
+          "rows": "{count} de {total} resultados",
+          "colVariable": "Variable",
+          "colDimension": "Dimensión",
+          "colSupplier": "Proveedor",
+          "colValue": "Valor",
+          "colConfidence": "Confianza",
+          "colFlagged": "Marcada",
+          "empty": "No se encontraron variables."
+        },
+        "risk": {
+          "filterAll": "Todos",
+          "colFactor": "Factor de Riesgo",
+          "empty": "No se encontraron datos de riesgo.",
+          "rating": {
+            "Bajo": "Bajo",
+            "Medio": "Medio",
+            "Alto": "Alto",
+            "Crítico": "Crítico"
+          }
+        },
+        "gates": {
+          "irreversible": "Irreversible",
+          "empty": "No se encontraron gates.",
+          "decidedBy": "Decidido por",
+          "on": "el",
+          "btnDecide": "Decidir",
+          "status": {
+            "pending": "Pendiente",
+            "open": "Abierto",
+            "approved": "Aprobado",
+            "rejected": "Rechazado",
+            "decided": "Decidido",
+            "expired": "Vencido"
+          },
+          "modal": {
+            "title": "Decisión de Gate",
+            "labelDecision": "Decisión",
+            "approve": "Aprobar",
+            "reject": "Rechazar",
+            "labelDecidedBy": "Decidido por",
+            "placeholderDecidedBy": "Tu nombre",
+            "labelRationale": "Justificación",
+            "placeholderRationale": "Explicá tu decisión…",
+            "rationaleHint": "Requerido para gates irreversibles",
+            "submit": "Confirmar decisión",
+            "cancel": "Cancelar",
+            "success": "Decisión guardada",
+            "error": "Error al guardar la decisión"
+          }
+        }
+      }
     },
     "agents": {
       "title": "Agentes",

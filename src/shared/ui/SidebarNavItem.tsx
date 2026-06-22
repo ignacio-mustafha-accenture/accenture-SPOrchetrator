@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import clsx from 'clsx';
+import type { LucideIcon } from 'lucide-react';
 
 type SidebarNavItemProps = {
   label: string;
@@ -7,9 +8,10 @@ type SidebarNavItemProps = {
   active?: boolean;
   iconOnly?: boolean;
   disabled?: boolean;
+  icon?: LucideIcon;
 };
 
-export function SidebarNavItem({ label, href, active = false, iconOnly = false, disabled = false }: SidebarNavItemProps) {
+export function SidebarNavItem({ label, href, active = false, iconOnly = false, disabled = false, icon: Icon }: SidebarNavItemProps) {
   const baseClass = clsx(
     'flex gap-[10px] items-center rounded-[var(--radius-nav,8px)] w-full transition-colors',
     iconOnly ? 'justify-center p-[10px]' : 'px-[12px] py-[9px]',
@@ -20,16 +22,17 @@ export function SidebarNavItem({ label, href, active = false, iconOnly = false, 
         : String.raw`hover:bg-[var(--bg-hover,#1e2330)]`,
   );
 
-  const icon = (
-    <div
+  const icon = Icon ? (
+    <Icon
+      size={16}
       className={clsx(
-        'rounded-[2px] shrink-0 size-[16px]',
+        'shrink-0',
         active && !disabled
-          ? String.raw`bg-[var(--accent,#a100ff)]`
-          : String.raw`bg-[var(--text-secondary,#8b92a0)] opacity-70`,
+          ? String.raw`text-[var(--accent,#a100ff)]`
+          : String.raw`text-[var(--text-secondary,#8b92a0)] opacity-70`,
       )}
     />
-  );
+  ) : null;
 
   const text = !iconOnly && (
     <span
