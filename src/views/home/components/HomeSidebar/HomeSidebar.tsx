@@ -15,7 +15,7 @@ const navContainerVariants = {
 
 const navItemVariants = {
   hidden: { opacity: 0, y: 6 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.32, ease: 'easeOut' } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.32, ease: 'easeOut' as const } },
 };
 
 type User = {

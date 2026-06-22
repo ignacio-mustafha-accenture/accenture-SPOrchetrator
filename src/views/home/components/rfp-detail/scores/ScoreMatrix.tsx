@@ -30,7 +30,7 @@ const tbodyVariants = {
 };
 const trVariants = {
   hidden: { opacity: 0, y: 6 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.22, ease: 'easeOut' } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.22, ease: 'easeOut' as const } },
 };
 
 export function ScoreMatrix({ scores }: { scores: ScoreSupplier[] }) {
@@ -66,9 +66,9 @@ export function ScoreMatrix({ scores }: { scores: ScoreSupplier[] }) {
         id: s.supplierId,
         accessorFn: (row: ScoreRow) => row[s.supplierId] as number | null,
         header: () => s.supplierName,
-        cell: ({ getValue }: { getValue: () => number | null }) => (
+        cell: ({ getValue }: { getValue: () => unknown }) => (
           <div className="flex justify-center">
-            <ScoreCell score={getValue()} />
+            <ScoreCell score={getValue() as number | null} />
           </div>
         ),
         sortingFn: (a: Row<ScoreRow>, b: Row<ScoreRow>) => {

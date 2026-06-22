@@ -34,7 +34,7 @@ const tbodyVariants = {
 };
 const trVariants = {
   hidden: { opacity: 0, y: 6 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.22, ease: 'easeOut' } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.22, ease: 'easeOut' as const } },
 };
 
 export function RiskHeatmap({ risks }: { risks: RiskSupplier[] }) {
@@ -79,8 +79,8 @@ export function RiskHeatmap({ risks }: { risks: RiskSupplier[] }) {
         id: s.supplierId,
         accessorFn: (row: RiskRow) => row[s.supplierId] as RiskRating,
         header: () => s.supplierName,
-        cell: ({ getValue }: { getValue: () => RiskRating }) => {
-          const rating = getValue();
+        cell: ({ getValue }: { getValue: () => unknown }) => {
+          const rating = getValue() as RiskRating;
           return (
             <div className="flex justify-center">
               <RiskCell rating={rating} label={t(`rating.${rating}`)} />
