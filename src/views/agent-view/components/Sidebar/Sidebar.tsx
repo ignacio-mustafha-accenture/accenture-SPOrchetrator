@@ -2,12 +2,14 @@
 
 import { usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
+import { LayoutDashboard } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 import { SidebarView } from './SidebarView';
 import type { ChatSession } from '../../domain/entities/ChatSession';
 
-const NAV_CONFIG = [
-  { id: 'overview',  href: '/home',              disabled: true },
-  { id: 'rfps',      href: '/agent-view',         disabled: false },
+const NAV_CONFIG: { id: string; href: string; disabled: boolean; icon?: LucideIcon }[] = [
+  { id: 'overview',  href: '/home',                disabled: false, icon: LayoutDashboard },
+  { id: 'rfps',      href: '/agent-view',           disabled: false },
   { id: 'suppliers', href: '/agent-view/suppliers', disabled: true },
   { id: 'settings',  href: '/agent-view/settings',  disabled: true },
 ];

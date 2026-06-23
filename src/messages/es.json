@@ -265,7 +265,7 @@
     "inputPlaceholder": "Mensaje para BidIQ Agent…",
     "recentLabel": "RECIENTES",
     "nav": {
-      "overview": "Resumen",
+      "overview": "Dashboard",
       "rfps": "RFPs",
       "suppliers": "Proveedores",
       "settings": "Configuración"

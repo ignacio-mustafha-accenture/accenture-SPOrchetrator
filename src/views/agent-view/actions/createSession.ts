@@ -1,13 +1,13 @@
 'use server';
 
 import { createClient } from '@/shared/lib/supabase/server';
-import { GetRecentSessionsUseCase } from '../application/use-cases/GetRecentSessionsUseCase';
+import { CreateSessionUseCase } from '../application/use-cases/CreateSessionUseCase';
 import { BEApiChatRepository } from '../infrastructure/adapters/BEApiChatRepository';
-import type { ChatSession } from '../domain/entities/ChatSession';
+import type { CreateSessionResult } from '../domain/ports/IChatRepository';
 
-export async function getRecentSessions(): Promise<ChatSession[]> {
+export async function createSession(lang?: string): Promise<CreateSessionResult> {
   const supabase = await createClient();
   const { data: { session } } = await supabase.auth.getSession();
   const repo = new BEApiChatRepository(session?.access_token ?? '');
-  return new GetRecentSessionsUseCase(repo).execute();
+  return new CreateSessionUseCase(repo).execute(lang);
 }

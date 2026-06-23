@@ -1,26 +1,18 @@
 'use client';
 
-import { useTransition } from 'react';
 import { ChatInput } from '@/shared/ui';
 
 type ChatAreaClientProps = {
-  action: (sessionId: string, content: string) => Promise<unknown>;
+  onSubmit: (value: string) => void;
+  isPending?: boolean;
   placeholder?: string;
 };
 
-export function ChatAreaClient({ action, placeholder }: ChatAreaClientProps) {
-  const [isPending, startTransition] = useTransition();
-
-  const handleSubmit = (value: string) => {
-    startTransition(() => {
-      action('new', value);
-    });
-  };
-
+export function ChatAreaClient({ onSubmit, isPending = false, placeholder }: ChatAreaClientProps) {
   return (
     <ChatInput
       placeholder={placeholder}
-      onSubmit={handleSubmit}
+      onSubmit={onSubmit}
       disabled={isPending}
     />
   );

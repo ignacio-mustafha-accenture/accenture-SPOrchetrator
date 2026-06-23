@@ -1,14 +1,43 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
+import { motion, type Variants } from 'framer-motion';
+import type { LucideIcon } from 'lucide-react';
 import { LogoMark, SidebarNavItem, SidebarSessionItem, SidebarUserChip } from '@/shared/ui';
 import type { ChatSession } from '../../domain/entities/ChatSession';
+
+// ── Animation variants ────────────────────────────────────────────────────────
+
+// Nav items: stagger top → bottom
+const navContainer: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.07, delayChildren: 0.1 } },
+};
+
+const navItem: Variants = {
+  hidden: { opacity: 0, y: -10 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.32, ease: "circOut" } },
+};
+
+// Recent sessions: stagger from bottom-left
+const recentsContainer: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.09, delayChildren: 0.22 } },
+};
+
+const recentItem: Variants = {
+  hidden: { opacity: 0, x: -18, y: 14 },
+  visible: { opacity: 1, x: 0, y: 0, transition: { duration: 0.38, ease: "circOut" } },
+};
+
+// ── Types ─────────────────────────────────────────────────────────────────────
 
 type NavItem = {
   id: string;
   label: string;
   href: string;
   disabled?: boolean;
+  icon?: LucideIcon;
 };
 
 type User = {
@@ -27,6 +56,8 @@ type SidebarViewProps = {
   onDrawerClose: () => void;
   onHamburgerClick: () => void;
 };
+
+// ── Component ─────────────────────────────────────────────────────────────────
 
 export function SidebarView({
   navItems,
@@ -69,19 +100,29 @@ export function SidebarView({
       {/* Divider */}
       <div className={String.raw`bg-[var(--border-subtle,rgba(255,255,255,0.07))] h-px w-full shrink-0`} />
 
-      {/* Nav items */}
-      <div className={iconOnly ? 'flex flex-col gap-[4px] items-center p-[8px] w-full shrink-0' : 'flex flex-col gap-[2px] items-start p-[8px] w-full shrink-0'}>
+      {/* Nav items — stagger top → bottom */}
+      <motion.div
+        variants={navContainer}
+        initial="hidden"
+        animate="visible"
+        className={iconOnly
+          ? 'flex flex-col gap-[4px] items-center p-[8px] w-full shrink-0'
+          : 'flex flex-col gap-[2px] items-start p-[8px] w-full shrink-0'
+        }
+      >
         {navItems.map((item) => (
-          <SidebarNavItem
-            key={item.id}
-            label={item.label}
-            href={item.href}
-            active={item.id === activeNavId}
-            iconOnly={iconOnly}
-            disabled={item.disabled}
-          />
+          <motion.div key={item.id} variants={navItem} className="w-full">
+            <SidebarNavItem
+              label={item.label}
+              href={item.href}
+              active={item.id === activeNavId}
+              iconOnly={iconOnly}
+              disabled={item.disabled}
+              icon={item.icon}
+            />
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
 
       {!iconOnly && (
         <>
@@ -95,17 +136,23 @@ export function SidebarView({
             </p>
           </div>
 
-          {/* Recent sessions */}
-          <div className="flex flex-col gap-[2px] items-start pb-[8px] pt-[2px] px-[8px] w-full shrink-0">
+          {/* Recent sessions — stagger from bottom-left */}
+          <motion.div
+            variants={recentsContainer}
+            initial="hidden"
+            animate="visible"
+            className="flex flex-col gap-[2px] items-start pb-[8px] pt-[2px] px-[8px] w-full shrink-0"
+          >
             {recentSessions.map((session) => (
-              <SidebarSessionItem
-                key={session.id}
-                title={session.title}
-                subtitle={`${session.status.charAt(0).toUpperCase() + session.status.slice(1)} · ${session.date}`}
-                href={`/agent-view?session=${session.id}`}
-              />
+              <motion.div key={session.id} variants={recentItem} className="w-full">
+                <SidebarSessionItem
+                  title={session.title}
+                  subtitle={`${session.status.charAt(0).toUpperCase() + session.status.slice(1)} · ${session.date}`}
+                  href={`/agent-view?session=${session.id}`}
+                />
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </>
       )}
 
@@ -143,14 +190,12 @@ export function SidebarView({
       {/* Mobile: <md → drawer */}
       {isDrawerOpen && (
         <div className="md:hidden fixed inset-0 z-50 flex">
-          {/* Backdrop */}
           <button
             type="button"
             aria-label={tc('aria.closeMenu')}
             onClick={onDrawerClose}
             className="absolute inset-0 bg-black/50 cursor-default"
           />
-          {/* Drawer panel */}
           <div className="relative z-10 h-full">
             {sidebarContent(false)}
           </div>

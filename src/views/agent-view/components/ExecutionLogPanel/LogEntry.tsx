@@ -1,14 +1,9 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import type { LogEntryData } from '../../domain/entities/AgentLogEntry';
 
-export type LogEntryData = {
-  id: string;
-  type: 'info' | 'success' | 'warning' | 'error';
-  label: string;
-  detail?: string;
-  timestamp: Date;
-};
+export type { LogEntryData };
 
 const ENTRY_STYLES: Record<LogEntryData['type'], string> = {
   info:    String.raw`text-[var(--status-info)] bg-[rgba(37,99,235,0.08)] dark:bg-[rgba(96,165,250,0.08)]`,
