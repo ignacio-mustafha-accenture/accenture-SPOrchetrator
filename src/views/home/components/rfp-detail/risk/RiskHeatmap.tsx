@@ -13,6 +13,7 @@ import {
   type Row,
 } from '@tanstack/react-table';
 import { ChevronUp, ChevronDown, ChevronsUpDown } from 'lucide-react';
+
 import type { RiskRating, RiskSupplier } from '../../../domain/entities/Risk';
 import { RiskCell } from './RiskCell';
 

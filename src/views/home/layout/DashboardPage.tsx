@@ -1,4 +1,5 @@
 import { Suspense } from 'react';
+
 import { getRfps } from '../actions/getRfps';
 import { DashboardKpiRow } from '../components/dashboard/DashboardKpiRow';
 import { DashboardKpiRowSkeleton } from '../components/dashboard/DashboardKpiRowSkeleton';

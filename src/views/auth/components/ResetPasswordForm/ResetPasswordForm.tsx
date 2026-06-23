@@ -10,6 +10,7 @@ import clsx from 'clsx';
 
 import { Button, Input, LogoMark, PasswordStrength } from '@/shared/ui';
 import { createClient } from '@/shared/lib/supabase/client';
+
 import { type PasswordStrengthLevel } from '../../types';
 
 const resetSchema = z

@@ -1,4 +1,5 @@
 import { getTranslations } from 'next-intl/server';
+
 import type { Rfp } from '../../domain/entities/Rfp';
 import { DashboardKpiRowAnimated } from './DashboardKpiRowAnimated';
 import type { DashboardKpiCardProps } from './DashboardKpiCard';

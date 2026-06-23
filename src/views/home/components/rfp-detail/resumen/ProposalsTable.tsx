@@ -12,9 +12,11 @@ import {
   type SortingState,
 } from '@tanstack/react-table';
 import { ChevronUp, ChevronDown, ChevronsUpDown } from 'lucide-react';
+
 import { Badge } from '@/shared/ui';
-import type { Proposal, ProposalStatus } from '../../../domain/entities/Proposal';
 import { formatDate } from '@/shared/lib/formatDate';
+
+import type { Proposal, ProposalStatus } from '../../../domain/entities/Proposal';
 
 const statusVariant: Record<ProposalStatus, 'Success' | 'Warning' | 'Neutral' | 'Error'> = {
   confirmed: 'Success',

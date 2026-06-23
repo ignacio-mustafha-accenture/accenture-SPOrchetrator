@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+
 import { DashboardKpiCard, type DashboardKpiCardProps } from './DashboardKpiCard';
 
 const container = {

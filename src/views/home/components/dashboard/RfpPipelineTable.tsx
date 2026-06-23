@@ -13,12 +13,14 @@ import {
   type SortingState,
 } from '@tanstack/react-table';
 import { ChevronUp, ChevronDown, ChevronsUpDown, Search } from 'lucide-react';
+
 import { Badge } from '@/shared/ui';
+import { formatDate } from '@/shared/lib/formatDate';
+
 import type { Rfp, RfpStatus } from '../../domain/entities/Rfp';
 import { RfpProgressBar } from './RfpProgressBar';
 import { RfpStageChip } from './RfpStageChip';
 import { RfpStageStatus } from './RfpStageStatus';
-import { formatDate } from '@/shared/lib/formatDate';
 
 const statusVariant: Record<RfpStatus, 'Neutral' | 'Accent' | 'Warning' | 'Success'> = {
   parsing: 'Neutral',

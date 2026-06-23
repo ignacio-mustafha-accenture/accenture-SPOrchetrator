@@ -1,6 +1,7 @@
 'use server';
 
 import { createClient } from '@/shared/lib/supabase/server';
+
 import { GetRfpScoresUseCase } from '../application/use-cases/GetRfpScoresUseCase';
 import { BEApiRfpRepository } from '../infrastructure/adapters/BEApiRfpRepository';
 import type { ScoreSupplier } from '../domain/entities/Score';

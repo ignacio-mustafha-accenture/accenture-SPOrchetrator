@@ -1,6 +1,7 @@
 'use server';
 
 import { createClient } from '@/shared/lib/supabase/server';
+
 import { GetRfpGatesUseCase } from '../application/use-cases/GetRfpGatesUseCase';
 import { BEApiRfpRepository } from '../infrastructure/adapters/BEApiRfpRepository';
 import type { Gate } from '../domain/entities/Gate';

@@ -3,8 +3,10 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
+
 import { TopbarBidiq } from '@/shared/ui';
 import { createClient } from '@/shared/lib/supabase/client';
+
 import { Sidebar } from '../Sidebar/Sidebar';
 import type { ChatSession } from '../../domain/entities/ChatSession';
 

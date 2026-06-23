@@ -52,6 +52,7 @@ export function ForgotPasswordForm(): React.JSX.Element {
 
   useEffect(() => {
     if (step !== 'sent') return;
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setSecondsLeft(RESEND_SECONDS);
     const interval = setInterval(() => {
       setSecondsLeft((s) => {

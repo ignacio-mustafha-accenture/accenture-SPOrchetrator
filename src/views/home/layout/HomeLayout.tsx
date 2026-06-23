@@ -1,6 +1,8 @@
 import { redirect } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
+
 import { createClient } from '@/shared/lib/supabase/server';
+
 import { HomeViewShell } from '../components/HomeViewShell/HomeViewShell';
 
 type HomeLayoutProps = {

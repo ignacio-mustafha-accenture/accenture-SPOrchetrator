@@ -1,4 +1,5 @@
 import Link from 'next/link';
+
 import { Badge } from '@/shared/ui';
 
 type AgentCardProps = {

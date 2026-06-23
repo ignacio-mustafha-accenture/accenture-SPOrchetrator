@@ -1,6 +1,7 @@
 'use server';
 
 import { createClient } from '@/shared/lib/supabase/server';
+
 import { GetRfpVariablesUseCase } from '../application/use-cases/GetRfpVariablesUseCase';
 import { BEApiRfpRepository } from '../infrastructure/adapters/BEApiRfpRepository';
 import type { Variable } from '../domain/entities/Variable';

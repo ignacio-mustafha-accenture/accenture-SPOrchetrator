@@ -1,10 +1,18 @@
 'use server';
 
-import { MockChatRepository } from '../infrastructure/adapters/MockChatRepository';
-import { SendMessageUseCase } from '../application/use-cases/SendMessageUseCase';
-import type { ChatMessage } from '../domain/entities/ChatMessage';
+import { createClient } from '@/shared/lib/supabase/server';
 
-export async function sendMessage(sessionId: string, content: string): Promise<ChatMessage> {
-  const repo = new MockChatRepository();
-  return new SendMessageUseCase(repo).execute(sessionId, content);
+import { SendMessageUseCase } from '../application/use-cases/SendMessageUseCase';
+import { BEApiChatRepository } from '../infrastructure/adapters/BEApiChatRepository';
+import type { SendMessageResult } from '../domain/ports/IChatRepository';
+
+export async function sendMessage(
+  sessionId: string,
+  content: string,
+  lang?: string,
+): Promise<SendMessageResult> {
+  const supabase = await createClient();
+  const { data: { session } } = await supabase.auth.getSession();
+  const repo = new BEApiChatRepository(session?.access_token ?? '');
+  return new SendMessageUseCase(repo).execute(sessionId, content, lang);
 }

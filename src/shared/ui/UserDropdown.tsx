@@ -7,8 +7,10 @@ import { useLocale, useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import { Globe, LogOut, Moon, Monitor } from 'lucide-react';
 import clsx from 'clsx';
-import { Avatar } from './Avatar';
+
 import { setLocale } from '@/shared/lib/setLocale';
+
+import { Avatar } from './Avatar';
 
 type UserDropdownProps = {
   className?: string;

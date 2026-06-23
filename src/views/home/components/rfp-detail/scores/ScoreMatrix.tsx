@@ -13,6 +13,7 @@ import {
   type Row,
 } from '@tanstack/react-table';
 import { ChevronUp, ChevronDown, ChevronsUpDown } from 'lucide-react';
+
 import type { ScoreSupplier } from '../../../domain/entities/Score';
 import { ScoreCell } from './ScoreCell';
 

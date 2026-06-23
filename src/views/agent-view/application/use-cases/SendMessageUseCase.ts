@@ -1,10 +1,9 @@
-import type { IChatRepository } from '../../domain/ports/IChatRepository';
-import type { ChatMessage } from '../../domain/entities/ChatMessage';
+import type { IChatRepository, SendMessageResult } from '../../domain/ports/IChatRepository';
 
 export class SendMessageUseCase {
   constructor(private readonly repo: IChatRepository) {}
 
-  async execute(sessionId: string, content: string): Promise<ChatMessage> {
-    return this.repo.sendMessage(sessionId, content);
+  execute(sessionId: string, content: string, lang?: string): Promise<SendMessageResult> {
+    return this.repo.sendMessage(sessionId, content, lang);
   }
 }

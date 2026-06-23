@@ -2,9 +2,11 @@
 
 import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
+
+import { formatDate } from '@/shared/lib/formatDate';
+
 import type { Rfp } from '../../domain/entities/Rfp';
 import { RfpStatusBadge } from '../dashboard/RfpStatusBadge';
-import { formatDate } from '@/shared/lib/formatDate';
 
 const containerVariants = {
   hidden: {},

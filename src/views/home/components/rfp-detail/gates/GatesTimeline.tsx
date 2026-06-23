@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
+
 import type { Gate } from '../../../domain/entities/Gate';
 import { GateCard } from './GateCard';
 

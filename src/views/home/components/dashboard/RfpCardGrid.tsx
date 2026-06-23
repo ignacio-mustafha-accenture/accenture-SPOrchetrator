@@ -1,4 +1,5 @@
 import { useTranslations } from 'next-intl';
+
 import type { Rfp } from '../../domain/entities/Rfp';
 import { RfpCard } from './RfpCard';
 

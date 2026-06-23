@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+
 import { UserDropdown } from './UserDropdown';
 
 type TopbarPlatform = 'Desktop' | 'Tablet' | 'Mobile';

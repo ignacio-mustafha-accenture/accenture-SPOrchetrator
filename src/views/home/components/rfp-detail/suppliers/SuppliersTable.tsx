@@ -12,6 +12,7 @@ import {
   type SortingState,
 } from '@tanstack/react-table';
 import { ChevronUp, ChevronDown, ChevronsUpDown, Search } from 'lucide-react';
+
 import type { Supplier } from '../../../domain/entities/Supplier';
 
 function SortIcon({ sorted }: { sorted: 'asc' | 'desc' | false }) {

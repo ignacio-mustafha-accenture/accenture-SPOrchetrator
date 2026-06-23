@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
+
 import type { Proposal } from '../../domain/entities/Proposal';
 import type { Rfp } from '../../domain/entities/Rfp';
 import type { RiskSupplier } from '../../domain/entities/Risk';

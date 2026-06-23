@@ -3,6 +3,7 @@
 import { createContext, useContext, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 import { AnimatePresence } from 'framer-motion';
+
 import { Topbar } from '@/shared/ui';
 
 const PAGE_ORDER: Record<string, number> = {
@@ -19,6 +20,7 @@ export function useNavigationDirection() {
   return useContext(NavigationDirectionContext);
 }
 
+/* eslint-disable react-hooks/refs */
 export function AuthAnimatedShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const prevPathRef = useRef<string>(pathname);
@@ -48,3 +50,4 @@ export function AuthAnimatedShell({ children }: { children: React.ReactNode }) {
     </NavigationDirectionContext.Provider>
   );
 }
+/* eslint-enable react-hooks/refs */

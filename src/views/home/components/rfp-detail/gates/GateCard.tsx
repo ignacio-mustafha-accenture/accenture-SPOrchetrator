@@ -2,10 +2,12 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
+
 import { Badge } from '@/shared/ui';
+import { formatDate } from '@/shared/lib/formatDate';
+
 import type { Gate, GateStatus } from '../../../domain/entities/Gate';
 import { GateDecisionModal } from './GateDecisionModal';
-import { formatDate } from '@/shared/lib/formatDate';
 
 const statusVariant: Record<GateStatus, 'Neutral' | 'Accent' | 'Success' | 'Error' | 'Warning'> = {
   pending: 'Neutral',

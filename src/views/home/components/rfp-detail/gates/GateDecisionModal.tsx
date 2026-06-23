@@ -6,6 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { toast } from 'sonner';
 import { useTranslations } from 'next-intl';
+
 import type { Gate } from '../../../domain/entities/Gate';
 import { decideGate } from '../../../actions/decideGate';
 

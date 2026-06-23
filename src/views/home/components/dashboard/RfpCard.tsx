@@ -1,9 +1,11 @@
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
+
+import { formatDate } from '@/shared/lib/formatDate';
+
 import type { Rfp } from '../../domain/entities/Rfp';
 import { RfpStatusBadge } from './RfpStatusBadge';
 import { RfpProgressBar } from './RfpProgressBar';
-import { formatDate } from '@/shared/lib/formatDate';
 
 export function RfpCard({ rfp }: { rfp: Rfp }) {
   const t = useTranslations('home.rfps.card');

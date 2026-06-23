@@ -4,6 +4,7 @@ import { usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { LayoutDashboard, Bot } from 'lucide-react';
 import { motion } from 'framer-motion';
+
 import { LogoMark, SidebarNavItem, SidebarUserChip } from '@/shared/ui';
 
 const navContainerVariants = {

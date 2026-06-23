@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
+
 import type { Rfp, StageStatus } from '../../domain/entities/Rfp';
 
 type StageState = StageStatus | 'idle';

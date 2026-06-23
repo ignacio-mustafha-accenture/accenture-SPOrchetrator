@@ -1,5 +1,7 @@
 import { getTranslations } from 'next-intl/server';
+
 import { createClient } from '@/shared/lib/supabase/server';
+
 import { AgentViewShell } from '../components/AgentViewShell/AgentViewShell';
 import { getRecentSessions } from '../actions/getSessions';
 

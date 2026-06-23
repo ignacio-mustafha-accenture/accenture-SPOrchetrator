@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { ScrollText } from 'lucide-react';
+
 import { LogEntry, type LogEntryData } from './LogEntry';
 
 type ExecutionLogPanelProps = {

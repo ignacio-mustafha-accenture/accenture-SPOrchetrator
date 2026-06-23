@@ -12,7 +12,9 @@ import {
   type SortingState,
 } from '@tanstack/react-table';
 import { ChevronUp, ChevronDown, ChevronsUpDown, Search } from 'lucide-react';
+
 import { Badge } from '@/shared/ui';
+
 import type { Variable } from '../../../domain/entities/Variable';
 import type { Supplier } from '../../../domain/entities/Supplier';
 
